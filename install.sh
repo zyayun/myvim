@@ -1,7 +1,7 @@
 # vimrc
 
 # Install
-git clone git@github.com/zyayun/myvim.git .vim
+git clone https://github.com/zyayun/myvim.git .vim
 ln -s ~/.vim/.vimrc ~/.vimrc
 
 # Plug install
