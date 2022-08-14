@@ -125,6 +125,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 " 代码补全 {
 "Plug 'ycm-core/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
+  "let g:jedi#environment_path = "venv"
+  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
+  let g:jedi#completions_enabled = 1
 "Plug 'github/copilot.vim'
 "}
 
@@ -163,6 +166,7 @@ Plug 'jreybert/vimagit'
 "
 " python-mode shortcut 'K' {
 Plug 'klen/python-mode'
+  " <leader> r Run code"
   " Disable if python support not present
   if !has('python') && !has('python3')
       let g:pymode = 0
