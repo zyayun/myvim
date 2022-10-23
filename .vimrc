@@ -16,7 +16,11 @@ set wildmenu
 set encoding=utf-8
 let g:rehash256 = 1
 let g:molokai_original = 1
-set term=ansi
+
+if has('vim')
+    set term=ansi
+endif
+
 set filetype=on
 
 "==========" 
@@ -69,10 +73,18 @@ map <leader>R   :source $MYVIMRC<CR>
 map <leader>tt  :NERDTreeToggle<CR>
 map <leader>ff  :TagbarToggle<CR>
 
+
+"==========" 
+" Neovim   "
+"==========" 
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
+
 "==========" 
 " Split  "
 "==========" 
-map <leader>v   :set splitright<CR>:vsplit<CR>
+map <leader>v :set splitright<CR>:vsplit<CR>
 "}
 
 "==========" 
@@ -90,6 +102,8 @@ call plug#begin()
 
 " 显示状态栏 {
 Plug 'vim-airline/vim-airline'
+  let g:airline#extensions#tabline#enabled = 1
+
 Plug 'vim-airline/vim-airline-themes'
   let g:airline_theme='term'
   let g:airline#extensions#tabline#enabled = 1
@@ -99,7 +113,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " 配色 {
 Plug 'connorholyday/vim-snazzy'
-let g:SnazzyTransparent = 0
+let g:SnazzyTransparent = 1
 "}
 
 " 文件树 {
@@ -107,7 +121,7 @@ Plug 'preservim/nerdtree'
 "}
 
 " git风格文件树 {
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin' 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -123,11 +137,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 "}
 
 " 代码补全 {
-"Plug 'ycm-core/YouCompleteMe'
-Plug 'davidhalter/jedi-vim'
-  "let g:jedi#environment_path = "venv"
-  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
-  let g:jedi#completions_enabled = 1
+Plug 'ycm-core/YouCompleteMe'
+"Plug 'davidhalter/jedi-vim'
+"  let g:jedi#environment_path = "venv"
+"  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
+"  let g:jedi#completions_enabled = 1
 "Plug 'github/copilot.vim'
 "}
 
@@ -136,6 +150,12 @@ Plug 'dense-analysis/ale'
   let b:ale_linters = {'python': ['pylint','flake8']}
   let b:ale_fixers= {'python': ['autopep8','yapf']}
   let b:ale_warn_about_trailing_whitespace = 0
+  let g:airline#extensions#ale#enabled = 1
+
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_sign_error = '✘'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_lint_on_text_changed = 'never'
 "}
 
 " 右侧显示函数列表  {
@@ -147,7 +167,7 @@ Plug 'mbbill/undotree'
 "}
 
 " 完整路径搜索 {
-"Plug 'kien/ctrlp'
+Plug 'kien/ctrlp'
 "}
 
 " 代码段 {
@@ -173,9 +193,29 @@ Plug 'klen/python-mode'
   endif
 "}
 
+" yaml {
+" brew install yamllint
+"
+Plug 'stephpy/vim-yaml'
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
+  let g:indentLine_char = '⦙'
+
+Plug 'pedrohdz/vim-yaml-folds'
+  set foldlevelstart=20
+
+"}
+
+" format {
+" install python-autopep8
+Plug 'chiel92/vim-autoformat'
+map <leader>F  :Autoformat<CR>
+" }
+
 " unknow {
 Plug 'tpope/vim-pathogen'
 "}
+
 
 call plug#end()
 
