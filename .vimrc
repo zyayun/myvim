@@ -16,6 +16,8 @@ set wildmenu
 set encoding=utf-8
 let g:rehash256 = 1
 let g:molokai_original = 1
+"回退不能使用
+set backspace=indent,eol,start
 
 if has('vim')
     set term=ansi
@@ -50,7 +52,7 @@ set softtabstop=2
 " 代码折叠 "
 "==========" 
 set foldmethod=indent
-set foldlevel=99
+set foldlevel=1
 "==========" 
 "  Path    "
 "==========" 
