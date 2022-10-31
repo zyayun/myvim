@@ -214,6 +214,10 @@ Plug 'chiel92/vim-autoformat'
 map <leader>F  :Autoformat<CR>
 " }
 
+" any-jump{
+Plug 'pechorin/any-jump'
+" }
+
 " unknow {
 Plug 'tpope/vim-pathogen'
 "}
@@ -224,3 +228,11 @@ call plug#end()
 " 配色 {
 "colorscheme snazzy
 "}
+"
+"
+
+" modeline
+" 1. ts tabstop
+" 2. sw shiftwidth
+" 3. sts softtabstop,每次backbreak删除X个字符
+" 4. et expandtab
