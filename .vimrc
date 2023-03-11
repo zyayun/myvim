@@ -2,16 +2,8 @@ syntax on
 set background=dark
 set number
 set nocompatible
-set relativenumber
-set nolist
-" 在当前光标显示一条线
-set cursorline
-set wrap
-" 显示打印了什么
-set showcmd
-" 按tab键有菜单的功能
-set wildmenu
-"结尾显示美元符号
+"set relativenumber
+set nolist " 在当前光标显示一条线 set cursorline set wrap " 显示打印了什么 set showcmd " 按tab键有菜单的功能 set wildmenu "结尾显示美元符号
 "set list
 set encoding=utf-8
 let g:rehash256 = 1
@@ -87,6 +79,10 @@ endif
 " Split  "
 "==========" 
 map <leader>v :set splitright<CR>:vsplit<CR>
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertical resize-5<CR>
+map <right> :vertical resize+5<CR>
 "}
 
 "==========" 
@@ -139,11 +135,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 "}
 
 " 代码补全 {
-Plug 'ycm-core/YouCompleteMe'
-"Plug 'davidhalter/jedi-vim'
-"  let g:jedi#environment_path = "venv"
-"  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
-"  let g:jedi#completions_enabled = 1
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'davidhalter/jedi-vim'
+  let g:jedi#environment_path = "venv"
+  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
+  let g:jedi#completions_enabled = 1
 "Plug 'github/copilot.vim'
 "}
 
@@ -211,7 +207,8 @@ Plug 'pedrohdz/vim-yaml-folds'
 " format {
 " install python-autopep8
 Plug 'chiel92/vim-autoformat'
-map <leader>F  :Autoformat<CR>
+  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
+  map <leader>F  :Autoformat<CR>
 " }
 
 " any-jump{
