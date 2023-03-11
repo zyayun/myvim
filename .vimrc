@@ -79,10 +79,10 @@ endif
 " Split  "
 "==========" 
 map <leader>v :set splitright<CR>:vsplit<CR>
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize-5<CR>
-map <right> :vertical resize+5<CR>
+map <up> :res 2<CR>
+map <down> :res -2<CR>
+map <left> :vertical resize-2<CR>
+map <right> :vertical resize+2<CR>
 "}
 
 "==========" 
