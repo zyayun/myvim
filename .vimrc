@@ -6,14 +6,14 @@ set nocompatible
 set nolist " 在当前光标显示一条线 set cursorline set wrap " 显示打印了什么 set showcmd " 按tab键有菜单的功能 set wildmenu "结尾显示美元符号
 "set list
 set encoding=utf-8
-let g:rehash256 = 1
-let g:molokai_original = 1
+"let g:rehash256 = 1
+"let g:molokai_original = 1
 "回退不能使用
 set backspace=indent,eol,start
 
-if has('vim')
-    set term=ansi
-endif
+"if has('vim')
+"    set term=ansi
+"endif
 
 set filetype=on
 
@@ -79,10 +79,10 @@ endif
 " Split  "
 "==========" 
 map <leader>v :set splitright<CR>:vsplit<CR>
-map <up> :res 2<CR>
+map <up> :res +2<CR>
 map <down> :res -2<CR>
-map <left> :vertical resize-2<CR>
-map <right> :vertical resize+2<CR>
+map <left> :vertical resize+2<CR>
+map <right> :vertical resize-2<CR>
 "}
 
 "==========" 
@@ -101,17 +101,24 @@ call plug#begin()
 " 显示状态栏 {
 Plug 'vim-airline/vim-airline'
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline_left_sep='▶'
+  let g:airline_right_sep='|'
 
 Plug 'vim-airline/vim-airline-themes'
-  let g:airline_theme='term'
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_theme='raven'
+  "let g:airline#extensions#tabline#enabled = 1
+  "let g:airline#extensions#tabline#left_sep = ' '
+  "let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
 
 " 配色 {
 Plug 'connorholyday/vim-snazzy'
 let g:SnazzyTransparent = 1
+
+"Plug 'itchyny/lightline.vim'
+"let g:lightline = {
+"      \ 'colorscheme': 'snazzy',
+"      \ }
 "}
 
 " 文件树 {
@@ -165,7 +172,7 @@ Plug 'mbbill/undotree'
 "}
 
 " 完整路径搜索 {
-Plug 'kien/ctrlp'
+Plug 'ctrlpvim/ctrlp.vim'
 "}
 
 " 代码段 {
@@ -183,12 +190,12 @@ Plug 'jreybert/vimagit'
 
 "
 " python-mode shortcut 'K' {
-Plug 'klen/python-mode'
-  " <leader> r Run code"
-  " Disable if python support not present
-  if !has('python') && !has('python3')
-      let g:pymode = 0
-  endif
+"Plug 'klen/python-mode'
+"  " <leader> r Run code"
+"  " Disable if python support not present
+"  if !has('python') && !has('python3')
+"      let g:pymode = 0
+"  endif
 "}
 
 " yaml {
@@ -212,12 +219,19 @@ Plug 'chiel92/vim-autoformat'
 " }
 
 " any-jump{
-Plug 'pechorin/any-jump'
+Plug 'git@github.com:itchyny/lightline.vim.git'
 " }
 
 " unknow {
 Plug 'tpope/vim-pathogen'
 "}
+"
+
+" vue {
+Plug 'yaegassy/coc-volar'
+  au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'vite.config.js', 'vue.config.js', 'nuxt.config.ts']
+  autocmd Filetype vue setlocal iskeyword+=-
+" }
 
 
 call plug#end()
