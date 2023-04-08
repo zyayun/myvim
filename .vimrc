@@ -11,9 +11,15 @@ set encoding=utf-8
 "回退不能使用
 set backspace=indent,eol,start
 
-"if has('vim')
-"    set term=ansi
-"endif
+set t_Co=256
+"  volue
+"  term            | t_Co
+"  -----------------+------ 
+"  xterm           | 8
+"  xterm-256color  | 256
+"  screen          | 8
+"  screen-256color | 256
+
 
 set filetype=on
 
@@ -66,6 +72,7 @@ map <leader>Q   :wq<CR>
 map <leader>R   :source $MYVIMRC<CR>
 map <leader>tt  :NERDTreeToggle<CR>
 map <leader>ff  :TagbarToggle<CR>
+map <leader>b   :buffers<CR>:buffer<Space>
 
 
 "==========" 
@@ -106,7 +113,7 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
   let g:airline_theme='raven'
-  "let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#enabled = 1
   "let g:airline#extensions#tabline#left_sep = ' '
   "let g:airline#extensions#tabline#left_alt_sep = '|'
 "}
@@ -173,6 +180,8 @@ Plug 'mbbill/undotree'
 
 " 完整路径搜索 {
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "}
 
 " 代码段 {
@@ -223,14 +232,14 @@ Plug 'git@github.com:itchyny/lightline.vim.git'
 " }
 
 " unknow {
-Plug 'tpope/vim-pathogen'
+" Plug 'tpope/vim-pathogen'
 "}
 "
 
 " vue {
-Plug 'yaegassy/coc-volar'
-  au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'vite.config.js', 'vue.config.js', 'nuxt.config.ts']
-  autocmd Filetype vue setlocal iskeyword+=-
+"Plug 'yaegassy/coc-volar'
+"  au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'vite.config.js', 'vue.config.js', 'nuxt.config.ts']
+"  autocmd Filetype vue setlocal iskeyword+=-
 " }
 
 
