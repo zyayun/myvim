@@ -2,8 +2,9 @@ syntax on
 set background=dark
 set number
 set nocompatible
-"set relativenumber
-set nolist " 在当前光标显示一条线 set cursorline set wrap " 显示打印了什么 set showcmd " 按tab键有菜单的功能 set wildmenu "结尾显示美元符号
+"set relativenumber 
+"" 在当前光标显示一条线 set cursorline set wrap " 显示打印了什么 set showcmd " 按tab键有菜单的功能 set wildmenu "结尾显示美元符号
+set nolist
 "set list
 set encoding=utf-8
 "let g:rehash256 = 1
@@ -65,14 +66,14 @@ noremap E 5j
 "   KeyMap  "
 "==========" 
 let mapleader=";"
-map s <nop>
-map <leader>w   :w<CR>
-map <leader>q   :q<CR>
-map <leader>Q   :wq<CR>
-map <leader>R   :source $MYVIMRC<CR>
-map <leader>tt  :NERDTreeToggle<CR>
-map <leader>ff  :TagbarToggle<CR>
-map <leader>b   :buffers<CR>:buffer<Space>
+nmap s <nop>
+nmap <leader>w   :w<CR>
+nmap <leader>q   :q<CR>
+nmap <leader>Q   :wq<CR>
+nmap <leader>R   :source $MYVIMRC<CR>
+nmap <leader>tt  :NERDTreeToggle<CR>
+nmap <leader>ff  :TagbarToggle<CR>
+nmap <leader>b   :buffers<CR>:buffer<Space>
 
 
 "==========" 
@@ -85,11 +86,11 @@ endif
 "==========" 
 " Split  "
 "==========" 
-map <leader>v :set splitright<CR>:vsplit<CR>
-map <up> :res +2<CR>
-map <down> :res -2<CR>
-map <left> :vertical resize+2<CR>
-map <right> :vertical resize-2<CR>
+nmap <leader>v :set splitright<CR>:vsplit<CR>
+nmap <up> :res +2<CR>
+nmap <down> :res -2<CR>
+nmap <left> :vertical resize+2<CR>
+nmap <right> :vertical resize-2<CR>
 "}
 
 "==========" 
@@ -130,6 +131,10 @@ let g:SnazzyTransparent = 1
 
 " 文件树 {
 Plug 'preservim/nerdtree'
+" gt: go to next tab
+" nnn gt : go to specified tab
+" gT: go to priview tab
+"  T: open file new tab,keep current menu
 "}
 
 " git风格文件树 {
@@ -159,8 +164,13 @@ Plug 'davidhalter/jedi-vim'
 
 " 代码错误检查  {
 Plug 'dense-analysis/ale'
-  let b:ale_linters = {'python': ['pylint','flake8']}
-  let b:ale_fixers= {'python': ['autopep8','yapf']}
+  map <C-e> :ALENext<CR>
+  map <C-u> :ALEPrevious<CR>
+  let b:ale_linters = {'python': ['ruff']}
+  let b:ale_fixers= {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \  'python': ['black','ruff']
+  \}
   let b:ale_warn_about_trailing_whitespace = 0
   let g:airline#extensions#ale#enabled = 1
 
@@ -231,25 +241,7 @@ Plug 'chiel92/vim-autoformat'
 Plug 'git@github.com:itchyny/lightline.vim.git'
 " }
 
-" unknow {
-" Plug 'tpope/vim-pathogen'
-"}
-"
-
-" vue {
-"Plug 'yaegassy/coc-volar'
-"  au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'vite.config.js', 'vue.config.js', 'nuxt.config.ts']
-"  autocmd Filetype vue setlocal iskeyword+=-
-" }
-
-
 call plug#end()
-
-" 配色 {
-"colorscheme snazzy
-"}
-"
-"
 
 " modeline
 " 1. ts tabstop
