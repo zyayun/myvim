@@ -108,6 +108,14 @@ call plug#begin()
 
 " 显示状态栏 {
 Plug 'vim-airline/vim-airline'
+
+  " goto tab number
+  nmap <leader>1 1gt
+  nmap <leader>2 2gt
+  nmap <leader>3 3gt
+  nmap <leader>4 4gt
+  nmap <leader>5 5gt
+
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_left_sep='▶'
   let g:airline_right_sep='|'
@@ -159,6 +167,20 @@ Plug 'davidhalter/jedi-vim'
   let g:jedi#environment_path = "venv"
   let g:jedi#environment_path = "/Users/yayun/workspace/venv"
   let g:jedi#completions_enabled = 1
+  let g:jedi#use_tabs_not_buffers = 1
+
+  "Key
+  let g:jedi#goto_command = "<leader>d"
+  let g:jedi#goto_assignments_command = "<leader>g"
+  let g:jedi#goto_stubs_command = "<leader>s"
+  let g:jedi#goto_definitions_command = ""
+  let g:jedi#documentation_command = "K"
+  let g:jedi#usages_command = "<leader>n"
+  let g:jedi#completions_command = "<C-Space>"
+  let g:jedi#rename_command = "<leader>r"
+  let g:jedi#rename_command_keep_name = "<leader>R"
+Plug 'ervandew/supertab'
+
 "Plug 'github/copilot.vim'
 "}
 
@@ -197,6 +219,12 @@ Plug 'junegunn/fzf.vim'
 " 代码段 {
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_camel_case_completion = 1
+  let g:neocomplete#enable_recursive_forward_search = 1
+  let g:neocomplete#popup_menu_height = 10
+
 " }
 
 " tagList {
@@ -204,7 +232,7 @@ Plug 'preservim/tagbar'
 " }
 
 " vimgit {
-Plug 'jreybert/vimagit'
+" Plug 'jreybert/vimagit'
 " }
 
 "
@@ -241,6 +269,8 @@ Plug 'chiel92/vim-autoformat'
 Plug 'git@github.com:itchyny/lightline.vim.git'
 " }
 
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'Raimondi/delimitMate'
 call plug#end()
 
 " modeline
