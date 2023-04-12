@@ -163,7 +163,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 " 代码补全 {
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
   let g:jedi#environment_path = "venv"
   let g:jedi#environment_path = "/Users/yayun/workspace/venv"
   let g:jedi#completions_enabled = 1
@@ -179,7 +179,6 @@ Plug 'davidhalter/jedi-vim'
   let g:jedi#completions_command = "<C-Space>"
   let g:jedi#rename_command = "<leader>r"
   let g:jedi#rename_command_keep_name = "<leader>R"
-Plug 'ervandew/supertab'
 
 "Plug 'github/copilot.vim'
 "}
@@ -214,6 +213,7 @@ Plug 'mbbill/undotree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 "}
 
 " 代码段 {
@@ -232,7 +232,11 @@ Plug 'preservim/tagbar'
 " }
 
 " vimgit {
-" Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
+  "color
+  "highlight DiffAdd    cterm=NONE ctermbg=22 ctermfg=15 guifg=#FFFFFF guibg=#4E9A06
+  "highlight DiffChange cterm=NONE ctermbg=88 ctermfg=15 guifg=#FFFFFF guibg=#F57900
+  "highlight DiffDelete cterm=NONE ctermbg=196 ctermfg=15 guifg=#FFFFFF guibg=#EF2929
 " }
 
 "
@@ -269,8 +273,10 @@ Plug 'chiel92/vim-autoformat'
 Plug 'git@github.com:itchyny/lightline.vim.git'
 " }
 
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" 括号补全{
 Plug 'Raimondi/delimitMate'
+"}
+"
 call plug#end()
 
 " modeline
