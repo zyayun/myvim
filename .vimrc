@@ -128,8 +128,8 @@ Plug 'vim-airline/vim-airline-themes'
 "}
 
 " 配色 {
-Plug 'connorholyday/vim-snazzy'
-let g:SnazzyTransparent = 1
+Plug 'morhetz/gruvbox'
+autocmd vimenter * nested colorscheme gruvbox
 
 "Plug 'itchyny/lightline.vim'
 "let g:lightline = {
@@ -179,6 +179,9 @@ Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
   let g:jedi#completions_command = "<C-Space>"
   let g:jedi#rename_command = "<leader>r"
   let g:jedi#rename_command_keep_name = "<leader>R"
+
+  "Complete bgcolor
+  hi Pmenu ctermbg=gray guibg=gray
 
 "Plug 'github/copilot.vim'
 "}
