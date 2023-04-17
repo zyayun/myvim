@@ -267,9 +267,28 @@ Plug 'pedrohdz/vim-yaml-folds'
 
 " format {
 " install python-autopep8
-Plug 'chiel92/vim-autoformat'
-  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
-  map <leader>F  :Autoformat<CR>
+"Plug 'chiel92/vim-autoformat'
+"  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
+"  map <leader>F  :Autoformat<CR>
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+nmap <leader>F :FormatCode<CR>
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer black
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+  autocmd FileType rust AutoFormatBuffer rustfmt
+  autocmd FileType vue AutoFormatBuffer prettier
+  autocmd FileType swift AutoFormatBuffer swift-format
+augroup END
+
 " }
 
 " any-jump{
