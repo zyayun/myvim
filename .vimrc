@@ -71,8 +71,8 @@ nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
 nmap <leader>Q   :wq<CR>
 nmap <leader>R   :source $MYVIMRC<CR>
-nmap <leader>tt  :NERDTreeToggle<CR>
-nmap <leader>ff  :TagbarToggle<CR>
+nmap <leader>t  :NERDTreeToggle<CR>
+nmap <leader>f  :TagbarToggle<CR>
 nmap <leader>b   :buffers<CR>:buffer<Space>
 
 
@@ -89,8 +89,8 @@ endif
 nmap <leader>v :set splitright<CR>:vsplit<CR>
 nmap <up> :res +2<CR>
 nmap <down> :res -2<CR>
-nmap <left> :vertical resize+2<CR>
-nmap <right> :vertical resize-2<CR>
+nmap <left> :vertical resize-2<CR>
+nmap <right> :vertical resize+2<CR>
 "}
 
 "==========" 
@@ -145,6 +145,14 @@ Plug 'preservim/nerdtree'
 "  T: open file new tab,keep current menu
 "}
 
+" commenter{
+Plug 'preservim/nerdcommenter'
+" <leader>cc       NERDCommenterComment
+" <leader>cy       NERDCommenterYank
+" <leader>cu       NERDCommenterUncomment
+" <leader>c<space> NERDCommenterToggle
+" }
+
 " git风格文件树 {
 Plug 'Xuyuanp/nerdtree-git-plugin' 
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -161,48 +169,56 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 "}
 
-" 代码补全 {
-"Plug 'ycm-core/YouCompleteMe'
-Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
-  let g:jedi#environment_path = "venv"
-  let g:jedi#environment_path = "/Users/yayun/workspace/venv"
-  let g:jedi#completions_enabled = 1
-  let g:jedi#use_tabs_not_buffers = 1
-
-  "Key
-  let g:jedi#goto_command = "<leader>d"
-  let g:jedi#goto_assignments_command = "<leader>g"
-  let g:jedi#goto_stubs_command = "<leader>s"
-  let g:jedi#goto_definitions_command = ""
-  let g:jedi#documentation_command = "K"
-  let g:jedi#usages_command = "<leader>n"
-  let g:jedi#completions_command = "<C-Space>"
-  let g:jedi#rename_command = "<leader>r"
-  let g:jedi#rename_command_keep_name = "<leader>R"
-
-  "Complete bgcolor
-  hi Pmenu ctermbg=gray guibg=gray
-
-"Plug 'github/copilot.vim'
-"}
-
-" 代码错误检查  {
-Plug 'dense-analysis/ale'
-  map <C-e> :ALENext<CR>
-  map <C-u> :ALEPrevious<CR>
-  let b:ale_linters = {'python': ['ruff']}
-  let b:ale_fixers= {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \  'python': ['black','ruff']
-  \}
-  let b:ale_warn_about_trailing_whitespace = 0
-  let g:airline#extensions#ale#enabled = 1
-
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_sign_error = '✘'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_lint_on_text_changed = 'never'
-"}
+" Python {
+" Don't support python2
+if !has('python') && has('python3')
+  Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
+  
+  autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
+    let g:jedi#environment_path = "venv"
+    let g:jedi#environment_path = "/Users/yayun/workspace/venv"
+    let g:jedi#completions_enabled = 1
+    let g:jedi#use_tabs_not_buffers = 1
+  
+    "Key
+    let g:jedi#goto_command = "<leader>d"
+    let g:jedi#goto_assignments_command = "<leader>g"
+    let g:jedi#goto_stubs_command = "<leader>s"
+    let g:jedi#goto_definitions_command = ""
+    let g:jedi#documentation_command = "K"
+    let g:jedi#usages_command = "<leader>n"
+    let g:jedi#completions_command = "<C-Space>"
+    let g:jedi#rename_command = "<leader>r"
+    let g:jedi#rename_command_keep_name = "<leader>R"
+  
+    "Complete bgcolor
+    hi Pmenu ctermbg=gray guibg=gray
+  "}
+  
+  " 代码错误检查  {
+  Plug 'dense-analysis/ale'
+    map <C-e> :ALENext<CR>
+    map <C-u> :ALEPrevious<CR>
+    let b:ale_linters = {'python': ['ruff']}
+    let b:ale_fixers= {
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \  'python': ['black','ruff']
+    \}
+    let b:ale_warn_about_trailing_whitespace = 0
+    let g:airline#extensions#ale#enabled = 1
+  
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_sign_error = '✘'
+    let g:ale_sign_warning = '⚠'
+    let g:ale_lint_on_text_changed = 'never'
+  "}
+  
+  " Python Mode {
+  Plug 'klen/python-mode'
+    "  " <leader> r Run code"
+  
+  " }
+endif
 
 " 右侧显示函数列表  {
 Plug 'preservim/tagbar'
@@ -242,16 +258,6 @@ Plug 'tpope/vim-fugitive'
   "highlight DiffDelete cterm=NONE ctermbg=196 ctermfg=15 guifg=#FFFFFF guibg=#EF2929
 " }
 
-"
-" python-mode shortcut 'K' {
-"Plug 'klen/python-mode'
-"  " <leader> r Run code"
-"  " Disable if python support not present
-"  if !has('python') && !has('python3')
-"      let g:pymode = 0
-"  endif
-"}
-
 " yaml {
 " brew install yamllint
 "
@@ -265,7 +271,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 
 "}
 
-" format {
+" Format {
 " install python-autopep8
 "Plug 'chiel92/vim-autoformat'
 "  autocmd FileType python setlocal ts=2 sts=2 sw=2 expandtab
