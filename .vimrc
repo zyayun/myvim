@@ -125,6 +125,8 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline#extensions#tabline#enabled = 1
   "let g:airline#extensions#tabline#left_sep = ' '
   "let g:airline#extensions#tabline#left_alt_sep = '|'
+
+Plug 'sstallion/vim-cursorline'
 "}
 
 " 配色 {
@@ -168,6 +170,7 @@ Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
   let g:jedi#environment_path = "/Users/yayun/workspace/venv"
   let g:jedi#completions_enabled = 1
   let g:jedi#use_tabs_not_buffers = 1
+  let g:jedi#show_call_signatures = "2"
 
   "Key
   let g:jedi#goto_command = "<leader>d"
@@ -206,6 +209,7 @@ Plug 'dense-analysis/ale'
 
 " 右侧显示函数列表  {
 Plug 'preservim/tagbar'
+  let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 "}
 
 " 显示文件历史 {
