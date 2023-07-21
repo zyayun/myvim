@@ -226,6 +226,45 @@ if !has('python') && has('python3')
   " }
 endif
 
+" goLang {
+Plugin 'buoto/gotests-vim'
+let g:gotests_bin = '/Users/yayun/go/bin/gotests'
+;et g:gotests_template_dir = '/Users/yayun/templates/'
+
+Plugin 'fatih/vim-go'
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <Leader>gi  <Plug>(go-imports)
+autocmd FileType go nmap <leader>gft <Plug>(go-test-func)
+autocmd FileType go nmap <Leader>ge  <Plug>(go-err-check)
+autocmd FileType go nmap <Leader>gv  <Plug>(go-vet)
+autocmd FileType go nmap <Leader>gr  <Plug>(go-referrers)
+autocmd FileType go nmap <Leader>gc  <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>gl  <Plug>(go-lint)
+autocmd FileType go nmap <leader>gs  <Plug>(go-rename)
+autocmd FileType go nmap <leader>gd  <Plug>(go-doc)
+autocmd FileType go nmap <leader>gp  <Plug>(go-play)
+
+autocmd FileType go nmap <Leader>ds  <Plug>(go-debug-start)
+autocmd FileType go nmap <leader>da  <Plug>(go-debug-attach)
+autocmd FileType go nmap <leader>dt  <Plug>(go-debug-test)
+autocmd FileType go nmap <leader>dc  <Plug>(go-debug-continue)
+autocmd FileType go nmap <leader>db  <Plug>(go-debug-breakpoint)
+autocmd FileType go nmap <leader>de  <Plug>(go-debug-stop)
+autocmd FileType go nmap <leader>n   <Plug>(go-debug-next)
+autocmd FileType go nmap <leader>s   <Plug>(go-debug-step)
+
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <C-c> :cclose<CR>
+
+let g:go_fmt_command = "goimports"
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let go_fold=0
+" }
+
 " 右侧显示函数列表  {
 Plug 'preservim/tagbar'
   if !exists('/usr/local/bin/ctags')
