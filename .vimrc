@@ -175,6 +175,7 @@ if !has('python') && has('python3')
   Plug 'davidhalter/jedi-vim' | Plug 'ervandew/supertab'
   
   autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
+
     let g:jedi#environment_path = "venv"
     let g:jedi#environment_path = "/Users/yayun/workspace/venv"
     let g:jedi#completions_enabled = 1
@@ -190,7 +191,7 @@ if !has('python') && has('python3')
     let g:jedi#completions_command = "<C-Space>"
     let g:jedi#rename_command = "<leader>r"
     let g:jedi#rename_command_keep_name = "<leader>R"
-  
+
     "Complete bgcolor
     hi Pmenu ctermbg=gray guibg=gray
   "}
@@ -214,15 +215,17 @@ if !has('python') && has('python3')
   "}
   
   " Python Mode {
-  Plug 'klen/python-mode'
-    "  " <leader> r Run code"
-  
+  "Plug 'klen/python-mode'
+  "  "  " <leader> r Run code"
+  "
   " }
 endif
 
 " 右侧显示函数列表  {
 Plug 'preservim/tagbar'
-  g:tagbar_ctags_bin = '/opt/homebrew/Cellar/ctags/5.8_2/bin'
+  if !exists('/usr/local/bin/ctags')
+    let g:tagbar_ctags_bin = '/opt/homebrew/Cellar/ctags/5.8_2/bin'
+  endif
 "}
 
 " 显示文件历史 {
