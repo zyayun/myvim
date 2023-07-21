@@ -4,6 +4,7 @@ set number
 set nocompatible
 "set relativenumber 
 "" 在当前光标显示一条线 set cursorline set wrap " 显示打印了什么 set showcmd " 按tab键有菜单的功能 set wildmenu "结尾显示美元符号
+set cursorline
 set nolist
 "set list
 set encoding=utf-8
@@ -105,6 +106,10 @@ autocmd BufReadPost *
 "  Plugins "
 "==========" 
 call plug#begin()
+
+" cursorline {
+Plug 'sstallion/vim-cursorline'
+" }
 
 " 显示状态栏 {
 Plug 'vim-airline/vim-airline'
