@@ -52,7 +52,7 @@ set softtabstop=2
 " 代码折叠 "
 "==========" 
 set foldmethod=indent
-set foldlevel=1
+set foldlevel=0
 "==========" 
 "  Path    "
 "==========" 
@@ -72,8 +72,8 @@ nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
 nmap <leader>Q   :wq<CR>
 nmap <leader>R   :source $MYVIMRC<CR>
-nmap <leader>t  :NERDTreeToggle<CR>
-nmap <leader>f  :TagbarToggle<CR>
+nmap <leader>t   :NERDTreeToggle<CR>
+nmap <leader>f   :TagbarToggle<CR>
 nmap <leader>b   :buffers<CR>:buffer<Space>
 
 
@@ -87,7 +87,7 @@ endif
 "==========" 
 " Split  "
 "==========" 
-nmap <leader>v :set splitright<CR>:vsplit<CR>
+nmap <leader>v :set splitright<CR>:vsplit<CR>::NERDTreeToggle<CR>
 nmap <up> :res +2<CR>
 nmap <down> :res -2<CR>
 nmap <left> :vertical resize-2<CR>
@@ -227,11 +227,11 @@ if !has('python') && has('python3')
 endif
 
 " goLang {
-Plugin 'buoto/gotests-vim'
+Plug 'buoto/gotests-vim'
 let g:gotests_bin = '/Users/yayun/go/bin/gotests'
-;et g:gotests_template_dir = '/Users/yayun/templates/'
+let g:gotests_template_dir = '/Users/yayun/templates/'
 
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -267,8 +267,8 @@ let go_fold=0
 
 " 右侧显示函数列表  {
 Plug 'preservim/tagbar'
-  if !exists('/usr/local/bin/ctags')
-    let g:tagbar_ctags_bin = '/opt/homebrew/Cellar/ctags/5.8_2/bin'
+  if !exists('/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags')
+    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
   endif
 "}
 
